@@ -109,7 +109,7 @@ class JobParameters {
 def buildEveryDay = pipelineJob('BuildEveryDay') {
     definition {
         triggers {
-            echo "before cron---";
+            echo 'before cron---';
             cron('H 18 * * *')
         }
         cpsScm {
