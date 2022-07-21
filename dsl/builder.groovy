@@ -53,21 +53,21 @@ class JobParameters {
         }
     }
 
-    static void setSonarUrl(job, sonarUrl) {
+    /**static void setSonarUrl(job, sonarUrl) {
         job.with {
             parameters {
                 stringParam('SONAR_URL', sonarUrl, 'Sonar Url')
             }
         }
-    }
+    }**/
 
-    static void setPackageToTest(job, packageToTest) {
+    /**static void setPackageToTest(job, packageToTest) {
         job.with {
             parameters {
                 stringParam('PACKAGE_TO_TEST', packageToTest, 'Package(s) to test')
             }
         }
-    }
+    }**/
 
     static void setBuildName(job, buildName) {
         job.with {
@@ -132,8 +132,8 @@ JobParameters.setLibraryBranchParam(buildEveryDay)
 JobParameters.setProjectRepository(buildEveryDay, projectRepo)
 JobParameters.setProjectTag(buildEveryDay, projectTag)
 JobParameters.setProjectName(buildEveryDay, projectRepoName)
-JobParameters.setSonarUrl(buildEveryDay, sonarUrl)
-JobParameters.setPackageToTest(buildEveryDay, packageToTest)
+//JobParameters.setSonarUrl(buildEveryDay, sonarUrl)
+//JobParameters.setPackageToTest(buildEveryDay, packageToTest)
 
 def packageAndDeploy = pipelineJob('PackageAndDeploy') {
     definition {
