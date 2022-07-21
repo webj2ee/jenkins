@@ -117,7 +117,7 @@ def buildEveryDay = pipelineJob('BuildEveryDay') {
                 git {
                     remote {
                         url("${pipelineRepo}")
-                        credentials("githubToolsCredentials")
+                        credentials("githubCodeRepoCredentials")
                     }
                     branch('${LIBRARY_BRANCH}')
                 }
@@ -142,7 +142,7 @@ def packageAndDeploy = pipelineJob('PackageAndDeploy') {
                 git {
                     remote {
                         url("${pipelineRepo}")
-                        credentials("githubToolsCredentials")
+                        credentials("githubCodeRepoCredentials")
                         credentials("commerceCloudCredentials")
                     }
                     branch('${LIBRARY_BRANCH}')
