@@ -45,13 +45,13 @@ class JobParameters {
         }
     }
 
-    static void setProjectName(job, projectRepoName) {
+   /** static void setProjectName(job, projectRepoName) {
         job.with {
             parameters {
                 stringParam('PROJECT_REPO_NAME', projectRepoName, 'Identifier for your project')
             }
         }
-    }
+    }**/
 
     /**static void setSonarUrl(job, sonarUrl) {
         job.with {
@@ -131,7 +131,7 @@ JobParameters.setLogs(buildEveryDay)
 JobParameters.setLibraryBranchParam(buildEveryDay)
 JobParameters.setProjectRepository(buildEveryDay, projectRepo)
 JobParameters.setProjectTag(buildEveryDay, projectTag)
-JobParameters.setProjectName(buildEveryDay, projectRepoName)
+//JobParameters.setProjectName(buildEveryDay, projectRepoName)
 //JobParameters.setSonarUrl(buildEveryDay, sonarUrl)
 //JobParameters.setPackageToTest(buildEveryDay, packageToTest)
 
