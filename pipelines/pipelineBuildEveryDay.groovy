@@ -10,9 +10,9 @@ pipeline {
             label 'subordinate'
         }
     }
-    triggers {
+    **/triggers {
         cron('H 18 * * *')
-    }
+    } **/
     options {
         skipDefaultCheckout(true) // No more 'Declarative: Checkout' stage
     }
@@ -24,7 +24,8 @@ pipeline {
                     projectDir = "${WORKSPACE}"
                 }
                 cleanWs()
-                checkoutRepository("${projectDir}", "${params.PROJECT_TAG}", "${params.PROJECT_REPO}")
+               // checkoutRepository("${projectDir}", "${params.PROJECT_TAG}", "${params.PROJECT_REPO}")
+                 checkoutRepository("${projectDir}", "${params.PROJECT_REPO}")
                 extractCommerce(projectDir)
             }
         }
