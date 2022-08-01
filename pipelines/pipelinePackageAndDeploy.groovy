@@ -19,6 +19,7 @@ pipeline {
             steps{
                 script{
                     currentBuild.displayName = "#${currentBuild.number}-${params.PROJECT_TAG}-${params.BUILD_NAME}"
+                    
                 }
             }
         }
