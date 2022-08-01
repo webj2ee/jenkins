@@ -3,12 +3,15 @@ def projectRepo = '${PROJECT_REPO}'
 def projectTag = '${PROJECT_TAG}'
 def sonarUrl = '${SONAR_URL}'
 def projectRepoName = '${SONAR_REPO_NAME}'
-def packageToTest = '${PACKAGE_TO_TEST}'
 
+def libraryBranch = '${LIBRARY_BRANCH}'
+
+def packageToTest = '${PACKAGE_TO_TEST}'
 def subscriptionId = '${SUBSCRIPTION_ID}'
 def token = '${CLOUD_API_TOKEN}'
 def buildName = '${BUILD_NAME}'
 def environment = '${ENVIRONMENT_ID}'
+
 
 // ****************************
 // *** JOB PARAMETERS
@@ -24,7 +27,7 @@ class JobParameters {
     static void setLibraryBranchParam(job) {
         job.with {
             parameters {
-                stringParam('LIBRARY_BRANCH', 'master', 'Library branch name')
+                stringParam('LIBRARY_BRANCH', libraryBranch, 'Library branch name')
             }
         }
     }
@@ -37,21 +40,19 @@ class JobParameters {
         }
     }
 
-   /** static void setProjectTag(job, projectTag) {
+    static void setProjectTag(job, projectTag) {
         job.with {
             parameters {
                 stringParam('PROJECT_TAG', projectTag, 'Tag or branch to use from your code project repository')
             }
         }
-    }**/
-
-   /** static void setProjectName(job, projectRepoName) {
+    } static void setProjectName(job, projectRepoName) {
         job.with {
             parameters {
                 stringParam('PROJECT_REPO_NAME', projectRepoName, 'Identifier for your project')
             }
         }
-    }**/
+    }
 
     /**static void setSonarUrl(job, sonarUrl) {
         job.with {
@@ -130,8 +131,8 @@ def buildEveryDay = pipelineJob('BuildEveryDay') {
 JobParameters.setLogs(buildEveryDay)
 JobParameters.setLibraryBranchParam(buildEveryDay)
 JobParameters.setProjectRepository(buildEveryDay, projectRepo)
-//JobParameters.setProjectTag(buildEveryDay, projectTag)
-//JobParameters.setProjectName(buildEveryDay, projectRepoName)
+JobParameters.setProjectTag(buildEveryDay, projectTag)
+JobParameters.setProjectName(buildEveryDay, projectRepoName)
 //JobParameters.setSonarUrl(buildEveryDay, sonarUrl)
 //JobParameters.setPackageToTest(buildEveryDay, packageToTest)
 
@@ -158,7 +159,7 @@ def packageAndDeploy = pipelineJob('PackageAndDeploy') {
 JobParameters.setLogs(packageAndDeploy)
 JobParameters.setLibraryBranchParam(packageAndDeploy)
 JobParameters.setBuildName(packageAndDeploy, buildName)
-//JobParameters.setProjectTag(packageAndDeploy, projectTag)
+JobParameters.setProjectTag(packageAndDeploy, projectTag)
 JobParameters.setDatabaseUpdateMode(packageAndDeploy)
 JobParameters.setEnvironment(packageAndDeploy, environment)
 JobParameters.setStrategy(packageAndDeploy)
