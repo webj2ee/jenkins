@@ -24,8 +24,7 @@ pipeline {
                     projectDir = "${WORKSPACE}"
                 }
                 cleanWs()
-               // checkoutRepository("${projectDir}", "${params.PROJECT_TAG}", "${params.PROJECT_REPO}")
-                 checkoutRepository("${projectDir}", "${params.PROJECT_REPO}")
+               checkoutRepository("${projectDir}", "${params.PROJECT_TAG}", "${params.PROJECT_REPO}")
                 extractCommerce(projectDir)
             }
         }
