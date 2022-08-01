@@ -37,13 +37,13 @@ class JobParameters {
         }
     }
 
-    static void setProjectTag(job, projectTag) {
+   /** static void setProjectTag(job, projectTag) {
         job.with {
             parameters {
                 stringParam('PROJECT_TAG', projectTag, 'Tag or branch to use from your code project repository')
             }
         }
-    }
+    }**/
 
    /** static void setProjectName(job, projectRepoName) {
         job.with {
@@ -130,7 +130,7 @@ def buildEveryDay = pipelineJob('BuildEveryDay') {
 JobParameters.setLogs(buildEveryDay)
 JobParameters.setLibraryBranchParam(buildEveryDay)
 JobParameters.setProjectRepository(buildEveryDay, projectRepo)
-JobParameters.setProjectTag(buildEveryDay, projectTag)
+//JobParameters.setProjectTag(buildEveryDay, projectTag)
 //JobParameters.setProjectName(buildEveryDay, projectRepoName)
 //JobParameters.setSonarUrl(buildEveryDay, sonarUrl)
 //JobParameters.setPackageToTest(buildEveryDay, packageToTest)
@@ -158,7 +158,7 @@ def packageAndDeploy = pipelineJob('PackageAndDeploy') {
 JobParameters.setLogs(packageAndDeploy)
 JobParameters.setLibraryBranchParam(packageAndDeploy)
 JobParameters.setBuildName(packageAndDeploy, buildName)
-JobParameters.setProjectTag(packageAndDeploy, projectTag)
+//JobParameters.setProjectTag(packageAndDeploy, projectTag)
 JobParameters.setDatabaseUpdateMode(packageAndDeploy)
 JobParameters.setEnvironment(packageAndDeploy, environment)
 JobParameters.setStrategy(packageAndDeploy)
