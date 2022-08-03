@@ -46,7 +46,9 @@ class JobParameters {
                 stringParam('PROJECT_TAG', projectTag, 'Tag or branch to use from your code project repository')
             }
         }
-    } static void setProjectName(job, projectRepoName) {
+    } 
+}
+    static void setProjectName(job, projectRepoName) {
         job.with {
             parameters {
                 stringParam('PROJECT_REPO_NAME', projectRepoName, 'Identifier for your project')
