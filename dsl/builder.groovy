@@ -47,7 +47,7 @@ class JobParameters {
             }
         }
     } 
-}
+
     static void setProjectName(job, projectRepoName) {
         job.with {
             parameters {
@@ -56,21 +56,21 @@ class JobParameters {
         }
     }
 
-    /**static void setSonarUrl(job, sonarUrl) {
+    /*static void setSonarUrl(job, sonarUrl) {
         job.with {
             parameters {
                 stringParam('SONAR_URL', sonarUrl, 'Sonar Url')
             }
         }
-    }**/
+    }*/
 
-    /**static void setPackageToTest(job, packageToTest) {
+    /*static void setPackageToTest(job, packageToTest) {
         job.with {
             parameters {
                 stringParam('PACKAGE_TO_TEST', packageToTest, 'Package(s) to test')
             }
         }
-    }**/
+    }*/
 
     static void setBuildName(job, buildName) {
         job.with {
