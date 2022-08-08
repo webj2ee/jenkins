@@ -24,13 +24,13 @@ class JobParameters {
         }
     }
 
-    static void setLibraryBranchParam(job,libraryBranch) {
+    /*static void setLibraryBranchParam(job) {
         job.with {
             parameters {
                 stringParam('LIBRARY_BRANCH', libraryBranch, 'Library branch name')
             }
         }
-    }
+    }*/
 
     static void setProjectRepository(job, projectRepo) {
         job.with {
@@ -131,7 +131,7 @@ def buildEveryDay = pipelineJob('BuildEveryDay') {
     }
 }
 JobParameters.setLogs(buildEveryDay)
-JobParameters.setLibraryBranchParam(buildEveryDay)
+//JobParameters.setLibraryBranchParam(buildEveryDay)
 JobParameters.setProjectRepository(buildEveryDay, projectRepo)
 JobParameters.setProjectTag(buildEveryDay, projectTag)
 JobParameters.setProjectName(buildEveryDay, projectRepoName)
@@ -159,7 +159,7 @@ def packageAndDeploy = pipelineJob('PackageAndDeploy') {
 
 
 JobParameters.setLogs(packageAndDeploy)
-JobParameters.setLibraryBranchParam(packageAndDeploy)
+//JobParameters.setLibraryBranchParam(packageAndDeploy)
 JobParameters.setBuildName(packageAndDeploy, buildName)
 JobParameters.setProjectTag(packageAndDeploy, projectTag)
 JobParameters.setDatabaseUpdateMode(packageAndDeploy)
