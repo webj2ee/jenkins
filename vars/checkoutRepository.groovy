@@ -1,4 +1,5 @@
 def call(commerceDir, branch, projectRepository) {
+	echo "##### Checkout repository commerceDir :${commerceDir}  branch : ${branch} projectRep : ${projectRepository} #####"
     urlPrefix = "https://"
 	repoDomainPart = projectRepository.substring(urlPrefix.size())
     repository = "https://$USERNAME:$PASSWORD@" + repoDomainPart
