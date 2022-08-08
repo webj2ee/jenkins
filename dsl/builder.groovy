@@ -1,17 +1,14 @@
-def pipelineRepo = '${PIPELINE_REPO}'
-def projectRepo = '${PROJECT_REPO}'
-def projectTag = '${PROJECT_TAG}'
-def sonarUrl = '${SONAR_URL}'
-def projectRepoName = '${SONAR_REPO_NAME}'
+def pipelineRepo = 'https://github.com/webj2ee/jenkins.git'
+def projectRepo = 'https://gitlab.com/deloitte-india-asset/sap-cx/sftpadapter.git'
+def projectTag = 'main'
+def sonarUrl = 'https://sonarcloud.io'
+def projectRepoName = 'ycommerce-sftp'
+def packageToTest = 'com.sftp*'
 
-def libraryBranch = 'master'//'${LIBRARY_BRANCH}'
-
-def packageToTest = '${PACKAGE_TO_TEST}'
 def subscriptionId = '${SUBSCRIPTION_ID}'
 def token = '${CLOUD_API_TOKEN}'
 def buildName = '${BUILD_NAME}'
 def environment = '${ENVIRONMENT_ID}'
-
 
 // ****************************
 // *** JOB PARAMETERS
@@ -24,13 +21,13 @@ class JobParameters {
         }
     }
 
-    /*static void setLibraryBranchParam(job) {
+    static void setLibraryBranchParam(job) {
         job.with {
             parameters {
-                stringParam('LIBRARY_BRANCH', libraryBranch, 'Library branch name')
+                stringParam('LIBRARY_BRANCH', 'master', 'Library branch name')
             }
         }
-    }*/
+    }
 
     static void setProjectRepository(job, projectRepo) {
         job.with {
@@ -46,7 +43,7 @@ class JobParameters {
                 stringParam('PROJECT_TAG', projectTag, 'Tag or branch to use from your code project repository')
             }
         }
-    } 
+    }
 
     static void setProjectName(job, projectRepoName) {
         job.with {
@@ -56,21 +53,21 @@ class JobParameters {
         }
     }
 
-    /*static void setSonarUrl(job, sonarUrl) {
+    static void setSonarUrl(job, sonarUrl) {
         job.with {
             parameters {
                 stringParam('SONAR_URL', sonarUrl, 'Sonar Url')
             }
         }
-    }*/
+    }
 
-    /*static void setPackageToTest(job, packageToTest) {
+    static void setPackageToTest(job, packageToTest) {
         job.with {
             parameters {
                 stringParam('PACKAGE_TO_TEST', packageToTest, 'Package(s) to test')
             }
         }
-    }*/
+    }
 
     static void setBuildName(job, buildName) {
         job.with {
@@ -111,29 +108,26 @@ class JobParameters {
 
 def buildEveryDay = pipelineJob('BuildEveryDay') {
     definition {
-       /* triggers {
-            echo 'before cron---';
+        /*triggers {
             cron('H 18 * * *')
         }*/
         cpsScm {
             scm {
                 git {
                     remote {
-                        //echo "pipelineRepo: ${pipelineRepo}"
-                        url("https://gitlab.com/deloitte-india-asset/sap-cx/sftpadapter.git")
+                        url("${pipelineRepo}")
                         credentials("githubCodeRepoCredentials")
                     }
-                    //echo "branch library: ${LIBRARY_BRANCH}"
-                    branch('main')
+                    branch('${LIBRARY_BRANCH}')
                 }
-                scriptPath('C:/jenkins/workspace/commerce-pipelines/pipelines/pipelineBuildEveryDay.groovy')
+                scriptPath('pipelines/pipelineBuildEveryDay.groovy')
                 lightweight(false)
             }
         }
     }
 }
 JobParameters.setLogs(buildEveryDay)
-//JobParameters.setLibraryBranchParam(buildEveryDay)
+JobParameters.setLibraryBranchParam(buildEveryDay)
 JobParameters.setProjectRepository(buildEveryDay, projectRepo)
 JobParameters.setProjectTag(buildEveryDay, projectTag)
 JobParameters.setProjectName(buildEveryDay, projectRepoName)
@@ -150,7 +144,7 @@ def packageAndDeploy = pipelineJob('PackageAndDeploy') {
                         credentials("githubCodeRepoCredentials")
                         credentials("commerceCloudCredentials")
                     }
-                    branch('master')
+                    branch('${LIBRARY_BRANCH}')
                 }
                 scriptPath('pipelines/pipelinePackageAndDeploy.groovy')
                 lightweight(false)
@@ -161,7 +155,7 @@ def packageAndDeploy = pipelineJob('PackageAndDeploy') {
 
 
 JobParameters.setLogs(packageAndDeploy)
-//JobParameters.setLibraryBranchParam(packageAndDeploy)
+JobParameters.setLibraryBranchParam(packageAndDeploy)
 JobParameters.setBuildName(packageAndDeploy, buildName)
 JobParameters.setProjectTag(packageAndDeploy, projectTag)
 JobParameters.setDatabaseUpdateMode(packageAndDeploy)
