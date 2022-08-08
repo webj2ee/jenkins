@@ -120,7 +120,7 @@ def buildEveryDay = pipelineJob('BuildEveryDay') {
                 git {
                     remote {
                         //echo "pipelineRepo: ${pipelineRepo}"
-                        url("${pipelineRepo}")
+                        url("https://mashankar@bitbucket.org/deloitte-cxdemo/commerce.git")
                         credentials("githubCodeRepoCredentials")
                     }
                     //echo "branch library: ${LIBRARY_BRANCH}"
