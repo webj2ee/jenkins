@@ -119,9 +119,11 @@ def buildEveryDay = pipelineJob('BuildEveryDay') {
             scm {
                 git {
                     remote {
+                        echo "pipelineRepo: ${pipelineRepo}"
                         url("${pipelineRepo}")
                         credentials("githubCodeRepoCredentials")
                     }
+                    echo "branch library: ${LIBRARY_BRANCH}"
                     branch('${LIBRARY_BRANCH}')
                 }
                 scriptPath('pipelines/pipelineBuildEveryDay.groovy')
