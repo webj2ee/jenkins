@@ -126,7 +126,7 @@ def buildEveryDay = pipelineJob('BuildEveryDay') {
                     //echo "branch library: ${LIBRARY_BRANCH}"
                     branch('main')
                 }
-                scriptPath("${WORKSPACE}"/'pipelines/pipelineBuildEveryDay.groovy')
+                scriptPath('C:/jenkins/workspace/pipelines/pipelineBuildEveryDay.groovy')
                 lightweight(false)
             }
         }
