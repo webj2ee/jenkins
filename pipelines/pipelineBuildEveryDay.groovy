@@ -23,8 +23,10 @@ pipeline {
                 script {
                     projectDir = "${WORKSPACE}"
                 }
+                echo "prepare steps start"
                 cleanWs()
                checkoutRepository("${projectDir}", "${params.PROJECT_TAG}", "${params.PROJECT_REPO}")
+                 echo "checkoutRepository"
                 extractCommerce(projectDir)
             }
         }
