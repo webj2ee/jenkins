@@ -124,7 +124,7 @@ def buildEveryDay = pipelineJob('BuildEveryDay') {
                         credentials("githubCodeRepoCredentials")
                     }
                     //echo "branch library: ${LIBRARY_BRANCH}"
-                    branch('master')
+                    branch('main')
                 }
                 scriptPath('pipelines/pipelineBuildEveryDay.groovy')
                 lightweight(false)
