@@ -4,7 +4,7 @@ def projectTag = '${PROJECT_TAG}'
 def sonarUrl = '${SONAR_URL}'
 def projectRepoName = '${SONAR_REPO_NAME}'
 
-def libraryBranch = '${LIBRARY_BRANCH}'
+def libraryBranch = 'master'//'${LIBRARY_BRANCH}'
 
 def packageToTest = '${PACKAGE_TO_TEST}'
 def subscriptionId = '${SUBSCRIPTION_ID}'
