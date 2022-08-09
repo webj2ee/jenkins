@@ -1,6 +1,6 @@
 def pipelineRepo = 'https://github.com/webj2ee/jenkins.git'
 def projectRepo = 'https://mashankar@bitbucket.org/deloitte-cxdemo/commerce.git' //'https://gitlab.com/deloitte-india-asset/sap-cx/sftpadapter.git'
-def projectTag = 'main'
+def projectTag = 'master'
 def sonarUrl = 'https://sonarcloud.io'
 def projectRepoName = 'ycommerce-sftp'
 def packageToTest = 'com.sftp*'
