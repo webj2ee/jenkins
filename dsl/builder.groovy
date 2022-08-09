@@ -1,5 +1,5 @@
 def pipelineRepo = 'https://github.com/webj2ee/jenkins.git'
-def projectRepo = 'git clone https://mashankar@bitbucket.org/deloitte-cxdemo/commerce.git' //'https://gitlab.com/deloitte-india-asset/sap-cx/sftpadapter.git'
+def projectRepo = 'https://mashankar@bitbucket.org/deloitte-cxdemo/commerce.git' //'https://gitlab.com/deloitte-india-asset/sap-cx/sftpadapter.git'
 def projectTag = 'master'
 def sonarUrl = 'https://sonarcloud.io'
 def projectRepoName = 'ycommerce-sftp'
@@ -116,7 +116,7 @@ def buildEveryDay = pipelineJob('BuildEveryDay') {
                 git {
                     remote {
                         url("${pipelineRepo}")
-                        credentials("githubCodeRepoCredentials")
+                        credentials("bitbucketCodeRepoCredentials")
                     }
                     branch('${LIBRARY_BRANCH}')
                 }
