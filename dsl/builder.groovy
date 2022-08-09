@@ -1,6 +1,6 @@
 def pipelineRepo = 'https://github.com/webj2ee/jenkins.git'
-def projectRepo = 'https://gitlab.com/deloitte-india-asset/sap-cx/sftpadapter.git'
-def projectTag = 'main'
+def projectRepo = 'git clone https://mashankar@bitbucket.org/deloitte-cxdemo/commerce.git' //'https://gitlab.com/deloitte-india-asset/sap-cx/sftpadapter.git'
+def projectTag = 'master'
 def sonarUrl = 'https://sonarcloud.io'
 def projectRepoName = 'ycommerce-sftp'
 def packageToTest = 'com.sftp*'
@@ -24,7 +24,7 @@ class JobParameters {
     static void setLibraryBranchParam(job) {
         job.with {
             parameters {
-                stringParam('LIBRARY_BRANCH', 'main', 'Library branch name')
+                stringParam('LIBRARY_BRANCH', 'master', 'Library branch name')
             }
         }
     }
