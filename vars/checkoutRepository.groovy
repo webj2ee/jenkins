@@ -5,7 +5,7 @@ def call(commerceDir, branch, projectRepository) {
     //repository = "https://$USERNAME:$PASSWORD@" + repoDomainPart
 echo "##### given repoDomainPart ${repoDomainPart} #####"
     
-    withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'githubCodeRepoCredentials', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {        
+    withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'bitbucketCodeRepoCredentials', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {        
         repoDomainPart = projectRepository.substring(urlPrefix.size())
         repository = "https://$USERNAME:$PASSWORD@" + repoDomainPart
         echo "##### Checkout repository #####"
