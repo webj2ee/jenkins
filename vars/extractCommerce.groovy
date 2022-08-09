@@ -1,5 +1,5 @@
 def call(commerceDir) {
-    ##### Define your workspace directory where commerce zip file is palced #####
+    #### Define your workspace directory where commerce zip file is palced #####
     def workspace = "C:/jenkins/workspace"
     echo "##### Extract commerce platform ##### -- ${commerceDir}"
     //bat "unzip -o ../CXCOM2005*.ZIP -d ${commerceDir}/core-customize"
